@@ -1,23 +1,33 @@
 use rand::{thread_rng, Rng};
 
 fn main() {
-    let alice_priv_key = generate_private_keys();
-    let bob_priv_key = generate_private_keys();
-    generate_elliptic_curve();
+    let bob_priv_key = generate_private_key();
+    let alice_priv_key = generate_private_key();
+    let rand_x = 78765431.0;     // this dummy value will be replaced by the VRF call
+    let rand_a = 26712813.0;     // this dummy value will be replaced by the VRF call
+    let rand_b = 47932189.0;     // this dummy value will be replaced by the VRF call
+    let resultant_y = calculate_y(rand_x, rand_a, rand_b);
+    println!("resultant_y: {}", resultant_y);
+    println!("resultant_y^2: {}", resultant_y.powf(2.0));
+    println!("x^3: {}", rand_x.powf(3.0));
+    let ax = rand_a * rand_x;
+    println!("a*x: {}", ax);
 }
 
 /*
-*   x: bob's private key
-*   a: alice's private key
-*   b: any real number
+*   @notice Uses the NIST formula  (y^2 = x^3 + ax + b)
+*   @param x: random number generated (private)
+*   @param a: random number generated (public)
+*   @param b: random number generated (public)
 **/
-fn generate_elliptic_curve(x: i32, a: i32, b: i32) -> i32 {
-    let y_squared = x.pow(3) + a*x + b;
-    return y_squared;
+fn calculate_y(x: f64, a: f64, b: f64) -> f64 {
+    let y_squared = (x.powf(3.0) + a*x + b);
+    let y = y_squared.sqrt();
+    return y;
 }
 
-fn generate_private_key() -> i32 {
+fn generate_private_key() -> f64 {
     let mut rng = thread_rng();
-    let x: i32 = rng.gen();
-    return x;
+    let priv_key: f64 = rng.gen();
+    return priv_key;
 }
