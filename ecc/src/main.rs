@@ -8,10 +8,16 @@ fn main() {
     let rand_b = 47932189.0;     // this dummy value will be replaced by the VRF call
     let resultant_y = calculate_y(rand_x, rand_a, rand_b);
     println!("resultant_y: {}", resultant_y);
-    println!("resultant_y^2: {}", resultant_y.powf(2.0));
-    println!("x^3: {}", rand_x.powf(3.0));
+    let resultant_y_sqaured = resultant_y.powf(2.0);
+    println!("resultant_y^2: {}", resultant_y_sqaured);
+    let x_cubed = rand_x.powf(3.0);
+    println!("x^3: {}", x_cubed);
     let ax = rand_a * rand_x;
     println!("a*x: {}", ax);
+    let is_y_squared_different = x_cubed + ax + rand_b;
+    println!("is_y_squared_different: {}", is_y_squared_different); 
+    let is_y_different = is_y_squared_different.sqrt();
+    println!("is_y_different: {}", is_y_different); 
 }
 
 /*
