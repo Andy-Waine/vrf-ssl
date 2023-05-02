@@ -1,11 +1,12 @@
 use rand::{thread_rng, Rng};
 
 fn main() {
-    let bob_priv_key = generate_private_key();
-    let alice_priv_key = generate_private_key();
-    let rand_x = 78765431.0;     // this dummy value will be replaced by the VRF call
-    let rand_a = 26712813.0;     // this dummy value will be replaced by the VRF call
-    let rand_b = 47932189.0;     // this dummy value will be replaced by the VRF call
+    let rand_p = 694857286.0        // this dummy value will be replaced by the VRF call (any prime integer)
+    let rand_a = 26712813.0;        // this dummy value will be replaced by the VRF call (any integer less than p)
+    let rand_b = 47932189.0;        // this dummy value will be replaced by the VRF call (any integer less than p)
+    let bob_priv_key = 919118189;   // this dummy value will be replaced by the VRF call (any integer less than p)
+    let alice_priv_key = 289125298; // this dummy value will be replaced by the VRF call (any integer less than p)
+
     let resultant_y = calculate_y(rand_x, rand_a, rand_b);
     println!("resultant_y: {}", resultant_y);
     let resultant_y_sqaured = resultant_y.powf(2.0);
@@ -21,19 +22,13 @@ fn main() {
 }
 
 /*
-*   @notice Uses the NIST formula  (y^2 = x^3 + ax + b)
-*   @param x: random number generated (private)
-*   @param a: random number generated (public)
-*   @param b: random number generated (public)
+*   @notice y^2 = x^3 + ax + b
+*   @param x_private_key: random int generated (private)
+*   @param a: random int generated (public)
+*   @param b: random int generated (public)
 **/
-fn calculate_y(x: f64, a: f64, b: f64) -> f64 {
+fn calculate_y(x_private_key: f64, a: f64, b: f64) -> f64 {
     let y_squared = (x.powf(3.0) + a*x + b);
     let y = y_squared.sqrt();
     return y;
-}
-
-fn generate_private_key() -> f64 {
-    let mut rng = thread_rng();
-    let priv_key: f64 = rng.gen();
-    return priv_key;
 }
