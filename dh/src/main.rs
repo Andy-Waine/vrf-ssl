@@ -1,7 +1,11 @@
 fn main() {
-    let modulus = 34022366920938;  // random integer obtained by vrf
+    let n = 34022;  // random prime integer obtained by vrf
+    let x_a = 29746; // random integer (< n) obtained by vrf
+    let x_b = 29198; // random integer (< n) obtained by vrf
     print_num_digits(modulus);
     find_next_prime(modulus);
+    // let alice_priv_key = 34022366920938;
+    println!("large exponentiation: {}")
 }
 
 fn find_next_prime(num_generated: u128) -> u128 {
