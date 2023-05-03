@@ -31,24 +31,4 @@ fn calculate_y(x: f64, a: f64, b: f64, p: f64) -> f64 {
     return y;
 }
 
-// fn ecc_dh_key_exchange(alice_priv_key: u128, bob_priv_key: u128, a: u128, b: u128, p: u128) -> u128 {
-//     // Calculate Alice's public key
-//     let alice_pub_key = (alice_priv_key.pow(3) + (a * alice_priv_key) + b) % p;
-//     println!("Alice's public key is: {}", alice_pub_key);
 
-//     // Calculate Bob's public key
-//     let bob_pub_key = (bob_priv_key.pow(3) + (a * bob_priv_key) + b) % p;
-//     println!("bob's public key is: {}", bob_pub_key);
-
-//     // Calculate Alice's shared key
-//     let alice_shared_key = (bob_pub_key * alice_priv_key) % p;
-
-//     // Calculate Bob's shared key
-//     let bob_shared_key = (alice_pub_key * bob_priv_key) % p;
-
-//     println!("Alice's shared key is: {}", alice_shared_key);
-//     println!("Bob's shared key is: {}", bob_shared_key);
-
-//     // Return the shared key
-//     (alice_shared_key == bob_shared_key) as u128
-// }
